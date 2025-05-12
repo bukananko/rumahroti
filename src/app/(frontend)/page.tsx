@@ -93,6 +93,18 @@ const HomePage = () => {
         </div>
       </section>
 
+      <section className="container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3944.594020300948!2d115.1900864!3d-8.6349152!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23f7f724a2d05%3A0x9d6410baf197bd17!2sRumah%20Roti%20Sourdough!5e0!3m2!1sen!2sid!4v1747057408916!5m2!1sen!2sid"
+          width="600"
+          height="450"
+          style={{ border: 0 }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="w-full mb-20"
+        ></iframe>
+      </section>
+
       <section className="bg-white dark:bg-card container pb-20">
         <div className="flex justify-center items-center flex-col space-y-4 bg-kursi py-44 bg-bottom">
           <h2 className="text-3xl md:text-6xl font-bold text-white">VISIT US</h2>
