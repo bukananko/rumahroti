@@ -26,8 +26,8 @@ export const Pages: CollectionConfig<'pages'> = {
   access: {
     create: () => false,
     delete: () => false,
-    read: () => false,
-    update: () => false,
+    read: authenticatedOrPublished,
+    update: authenticated,
   },
   // This config controls what's populated by default when a page is referenced
   // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
