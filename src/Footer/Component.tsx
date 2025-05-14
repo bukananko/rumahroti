@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import type { Footer } from '@/payload-types'
-import { Logo } from '@/components/Logo/Logo'
 import { Instagram } from 'lucide-react'
 
 export function Footer() {
