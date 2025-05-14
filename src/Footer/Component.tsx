@@ -4,7 +4,7 @@ import { Instagram } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-border bg-white dark:bg-card border-t-gray-500 px-5 lg:px-[160px]">
+    <footer className="mt-auto border-t border-border bg-white dark:bg-card border-t-gray-500 max-md:px-5 max-xl:px-10 xl:px-[160px]">
       <div className="py-5 gap-8 flex flex-col md:flex-row md:justify-between items-center">
         <p className="font-bold flex-1 text-lg">
           {/* <Logo className="dark:invert" /> */}

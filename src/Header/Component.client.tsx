@@ -36,7 +36,7 @@ export const HeaderClient = () => {
       className="relative z-20 bg-white dark:bg-card"
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="py-4 flex justify-between items-center px-5 lg:px-[160px]">
+      <div className="py-4 flex justify-between items-center max-md:px-5 max-xl:px-10 xl:px-[160px]">
         <Link href="/">
           <Logo loading="eager" priority="high" className="dark:invert" />
         </Link>

@@ -51,16 +51,16 @@ const HomePage = async () => {
     <main className="font-mono z-[9999999px]">
       <section
         id="hero"
-        className="h-96 md:min-h-screen flex justify-center items-start flex-col relative"
+        className="h-96 md:h-[525px] lg:min-h-screen flex justify-center items-start flex-col relative"
       >
         <Media
           resource={hero?.media}
           imgClassName="absolute z-[-1] brightness-[.60] inset-0 object-cover h-full"
         />
 
-        <div className="flex justify-center items-start flex-col p-5 md:pr-10 xl:mx-[120px] md:w-1/2">
+        <div className="flex justify-center items-start flex-col max-md:p-5 max-xl:p-10 md:pr-10 xl:mx-[160px] xl:w-1/2">
           <RichText
-            className="mb-6 xl:pr-[150px] text-white max-lg:prose-h1:text-5xl px-0 mx-0"
+            className="mb-6 xl:pr-[90px] text-white max-lg:prose-h1:text-5xl prose-h1:text-6xl px-0 mx-0 lg:prose-p:text-lg"
             data={hero!.richText!}
           />
           {Array.isArray(hero?.links) && hero.links?.length > 0 && (
@@ -81,13 +81,13 @@ const HomePage = async () => {
           blockType="content"
           columns={section1?.columns}
           isProse={false}
-          className="flex justify-center items-center text-4xl md:text-5xl"
+          className="text-4xl md:text-5xl max-sm:prose-p:inline"
         />
       </section>
 
       <section
         id="2"
-        className="h-[608px] flex justify-end items-end pb-10 pt-80 px-5 lg:px-[160px]"
+        className="h-[608px] flex justify-end items-end pb-10 pt-80 max-md:px-5 max-xl:px-10 xl:px-[160px]"
       >
         <Media
           resource={parallaxImage?.media}
@@ -103,7 +103,7 @@ const HomePage = async () => {
 
       <section
         id="3"
-        className="flex flex-col gap-32 justify-end items-end py-20 bg-white dark:bg-card px-5 lg:px-[160px]"
+        className="flex flex-col gap-32 justify-end items-end py-20 bg-white dark:bg-card max-md:px-5 max-xl:px-10 xl:px-[160px]"
       >
         <div className="grid md:grid-cols-2 gap-10">
           <ContentBlock
@@ -127,7 +127,7 @@ const HomePage = async () => {
         </div>
       </section>
 
-      <section id="map" className="bg-white dark:bg-card px-5 lg:px-[160px]">
+      <section id="map" className="bg-white dark:bg-card max-md:px-5 max-xl:px-10 xl:px-[160px]">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1978.2142831065084!2d110.916906!3d-7.41773!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23f7f724a2d05%3A0x9d6410baf197bd17!2sRumah%20Roti%20Sourdough!5e0!3m2!1sen!2sus!4v1747209378691!5m2!1sen!2sus"
           width="400"
@@ -138,7 +138,10 @@ const HomePage = async () => {
         ></iframe>
       </section>
 
-      <section id="4" className="py-20 px-5 lg:px-[160px] dark:bg-card bg-white z-0">
+      <section
+        id="4"
+        className="py-20 max-md:px-5 max-xl:px-10 xl:px-[160px] dark:bg-card bg-white z-0"
+      >
         <div className="relative h-[430px] md:h-[497px]">
           <Media
             resource={(section4[1] as MediaBlock).media}
