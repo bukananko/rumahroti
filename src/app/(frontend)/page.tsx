@@ -3,14 +3,16 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { payload } from '@/utilities/payload'
 import {
   ContentBlock as ContentBlockType,
   MediaBlock,
   Page,
   CallToActionBlock as CTABlockType,
 } from '@/payload-types'
-import { payload } from '@/utilities/payload'
-import React from 'react'
+import { CarouselWithDots } from '@/components/carousel-with-dots'
+import { CarouselItem } from '@/components/ui/carousel'
+import getAdditionalHero from '@/utilities/getAdditionalHero'
 
 const HomePage = async () => {
   const result = await payload.find({
@@ -47,34 +49,72 @@ const HomePage = async () => {
     block.blockName?.toLowerCase().includes('section 4'),
   ) as CTABlockType & MediaBlock
 
-  return (
-    <main className="font-mono z-[9999999px]">
-      <section
-        id="hero"
-        className="h-96 md:h-[525px] lg:min-h-screen flex justify-center items-start flex-col relative"
-      >
-        <Media
-          resource={hero?.media}
-          imgClassName="absolute z-[-1] brightness-[.60] inset-0 object-cover h-full"
-        />
+  const additionalHero = getAdditionalHero(layout)
 
-        <div className="flex justify-center items-start flex-col max-md:p-5 max-xl:p-10 md:pr-10 xl:mx-[160px] xl:w-1/2">
-          <RichText
-            className="mb-6 xl:pr-[90px] text-white max-lg:prose-h1:text-5xl prose-h1:text-6xl px-0 mx-0 lg:prose-p:text-lg"
-            data={hero!.richText!}
-          />
-          {Array.isArray(hero?.links) && hero.links?.length > 0 && (
-            <ul className="flex md:justify-center gap-4">
-              <li className="max-md:hidden">
-                <CMSLink {...hero.links[0]?.link} />
-              </li>
-              <li>
-                <CMSLink {...hero.links[1]?.link} />
-              </li>
-            </ul>
-          )}
-        </div>
-      </section>
+  return (
+    <main className="font-mono z-[9999999px] overflow-x-hidden">
+      <CarouselWithDots className="bg-white dark:bg-card">
+        <CarouselItem>
+          <section
+            id="hero"
+            className="h-96 md:h-[525px] lg:min-h-screen flex justify-center items-start flex-col relative"
+          >
+            <Media
+              resource={hero?.media}
+              imgClassName="absolute z-[-1] brightness-[.60] inset-0 object-cover h-full"
+            />
+
+            <div className="flex justify-center items-start flex-col max-md:p-5 max-xl:p-10 md:pr-10 xl:mx-[160px] xl:w-1/2">
+              <RichText
+                className="mb-6 xl:pr-[90px] text-white max-lg:prose-h1:text-5xl prose-h1:text-6xl px-0 mx-0 lg:prose-p:text-lg"
+                data={hero!.richText!}
+              />
+              {Array.isArray(hero?.links) && hero.links?.length > 0 && (
+                <ul className="flex md:justify-center gap-4">
+                  <li className="max-md:hidden">
+                    <CMSLink {...hero.links[0]?.link} />
+                  </li>
+                  <li>
+                    <CMSLink {...hero.links[1]?.link} />
+                  </li>
+                </ul>
+              )}
+            </div>
+          </section>
+        </CarouselItem>
+
+        {additionalHero.length > 0 &&
+          additionalHero.map((item, i) => (
+            <CarouselItem key={item?.id}>
+              <section
+                id={`hero-${i}`}
+                className="h-96 md:h-[525px] lg:min-h-screen flex justify-center items-start flex-col relative"
+              >
+                <Media
+                  resource={item?.media}
+                  imgClassName="absolute z-[-1] brightness-[.60] inset-0 object-cover h-full"
+                />
+
+                <div className="flex justify-center items-start flex-col max-md:p-5 max-xl:p-10 md:pr-10 xl:mx-[160px] xl:w-1/2">
+                  <RichText
+                    className="mb-6 xl:pr-[90px] text-white max-lg:prose-h1:text-5xl prose-h1:text-6xl px-0 mx-0 lg:prose-p:text-lg"
+                    data={item!.richText!}
+                  />
+                  {Array.isArray(item?.links) && item.links?.length > 0 && (
+                    <ul className="flex md:justify-center gap-4">
+                      <li className="max-md:hidden">
+                        <CMSLink {...item.links[0]?.link} />
+                      </li>
+                      <li>
+                        <CMSLink {...item.links[1]?.link} />
+                      </li>
+                    </ul>
+                  )}
+                </div>
+              </section>
+            </CarouselItem>
+          ))}
+      </CarouselWithDots>
 
       <section id="1" className="flex justify-center px-5 py-10 md:py-20 bg-white dark:bg-card">
         <ContentBlock
